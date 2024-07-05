@@ -19,8 +19,13 @@ def get_lat_long(address):
 df['Latitude'], df['Longitude'] = zip(*df['address'].apply(get_lat_long))
 
 # Save the updated DataFrame to a new CSV
-df.to_csv('updated_file.csv', index=False)
+df.to_csv('updated_addresses.csv', index=False)
+
 import folium
+import pandas as pd
+
+# Load the updated CSV file
+df = pd.read_csv('updated_addresses.csv')
 
 # Create a map centered around an average location
 map_osm = folium.Map(location=[df['Latitude'].mean(), df['Longitude'].mean()], zoom_start=12)
@@ -35,11 +40,11 @@ for _, row in df.iterrows():
 # Save the map as an HTML file
 map_osm.save('index.html')
 
-# Read the existing map.html file
+# Read the generated map.html file
 with open('index.html', 'r', encoding='utf-8') as file:
     html_content = file.read()
 
-# JavaScript code to dynamically track user location
+# JavaScript code to dynamically track user location and ask for permission
 js_code = """
 <script>
     // Initialize the map
@@ -72,10 +77,10 @@ js_code = """
         alert("Error accessing your location: " + e.message);
     }
 
-    // Function to request permission for geolocation
+    // Function to request permission for geolocation and track position
     function requestLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(updateUserLocation, onLocationError, {
+            navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
                 enableHighAccuracy: true,
                 maximumAge: 0
             });
@@ -88,7 +93,6 @@ js_code = """
     requestLocation();
 </script>
 """
-
 
 # Insert the JavaScript code before the closing </body> tag
 updated_html_content = html_content.replace("</body>", js_code + "</body>")
