@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_0d9fe28c45329b1183e3464b01cb33bd {
+                #map_3451174a3e6e6a70614a36924431d4e9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,61 +39,54 @@
 <body>
     
     
-            <div class="folium-map" id="map_0d9fe28c45329b1183e3464b01cb33bd" ></div>
+            <div class="folium-map" id="map_3451174a3e6e6a70614a36924431d4e9" ></div>
         
 
 <script>
-    // Initialize the map
-    var map = L.map('map').setView([{{ df['Latitude'].mean() }}, {{ df['Longitude'].mean() }}], 12);
+    document.addEventListener("DOMContentLoaded", function() {
+        var map = L.map('map').setView([{{ df['Latitude'].mean() }}, {{ df['Longitude'].mean() }}], 12);
 
-    // Add OSM tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
 
-    // Function to update user location on the map
-    function updateUserLocation(position) {
-        var latlng = [position.coords.latitude, position.coords.longitude];
+        function updateUserLocation(position) {
+            var latlng = [position.coords.latitude, position.coords.longitude];
 
-        // Remove previous marker if exists
-        if (typeof userMarker !== 'undefined') {
-            map.removeLayer(userMarker);
+            if (typeof userMarker !== 'undefined') {
+                map.removeLayer(userMarker);
+            }
+
+            userMarker = L.marker(latlng).addTo(map)
+                .bindPopup("Your current location").openPopup();
+
+            map.setView(latlng, 16);
         }
 
-        // Add new marker for user's current location
-        userMarker = L.marker(latlng).addTo(map)
-            .bindPopup("Your current location").openPopup();
-
-        // Update map view to user's current location
-        map.setView(latlng, 16);
-    }
-
-    // Function to handle errors in getting user location
-    function onLocationError(e) {
-        alert("Error accessing your location: " + e.message);
-    }
-
-    // Function to request permission for geolocation and track position
-    function requestLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
-                enableHighAccuracy: true,
-                maximumAge: 0
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
+        function onLocationError(e) {
+            alert("Error accessing your location: " + e.message);
         }
-    }
 
-    // Ask for permission when the page loads
-    requestLocation();
+        function requestLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        requestLocation();
+    });
 </script>
 </body>
 <script>
     
     
-            var map_0d9fe28c45329b1183e3464b01cb33bd = L.map(
-                "map_0d9fe28c45329b1183e3464b01cb33bd",
+            var map_3451174a3e6e6a70614a36924431d4e9 = L.map(
+                "map_3451174a3e6e6a70614a36924431d4e9",
                 {
                     center: [59.9643163, 30.2862535],
                     crs: L.CRS.EPSG3857,
@@ -107,31 +100,31 @@
 
         
     
-            var tile_layer_c86551ac75476ad579f72e1a497d9b72 = L.tileLayer(
+            var tile_layer_43d05a18d0704356e19bf8cb6e1b0423 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_c86551ac75476ad579f72e1a497d9b72.addTo(map_0d9fe28c45329b1183e3464b01cb33bd);
+            tile_layer_43d05a18d0704356e19bf8cb6e1b0423.addTo(map_3451174a3e6e6a70614a36924431d4e9);
         
     
-            var marker_ebdeb5b3b50f9e33dec3415362f7ec23 = L.marker(
+            var marker_a007857d6b848c6ff433508e7ba7134a = L.marker(
                 [59.9643163, 30.2862535],
                 {}
-            ).addTo(map_0d9fe28c45329b1183e3464b01cb33bd);
+            ).addTo(map_3451174a3e6e6a70614a36924431d4e9);
         
     
-        var popup_7f6be723c82c9b8a9a3b94ee83a2455b = L.popup({"maxWidth": "100%"});
+        var popup_ffa3a285a45c574359781a65d3aff6cb = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_5fdbd3172545299cc08584784612e04a = $(`<div id="html_5fdbd3172545299cc08584784612e04a" style="width: 100.0%; height: 100.0%;">Code:  *456#</div>`)[0];
-                popup_7f6be723c82c9b8a9a3b94ee83a2455b.setContent(html_5fdbd3172545299cc08584784612e04a);
+                var html_6962c37e377aa09deb7ad4529cad3366 = $(`<div id="html_6962c37e377aa09deb7ad4529cad3366" style="width: 100.0%; height: 100.0%;">Code:  *456#</div>`)[0];
+                popup_ffa3a285a45c574359781a65d3aff6cb.setContent(html_6962c37e377aa09deb7ad4529cad3366);
             
         
 
-        marker_ebdeb5b3b50f9e33dec3415362f7ec23.bindPopup(popup_7f6be723c82c9b8a9a3b94ee83a2455b)
+        marker_a007857d6b848c6ff433508e7ba7134a.bindPopup(popup_ffa3a285a45c574359781a65d3aff6cb)
         ;
 
         
