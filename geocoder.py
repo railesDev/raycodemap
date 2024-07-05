@@ -3,6 +3,7 @@ from opencage.geocoder import OpenCageGeocode
 import folium
 from folium.plugins import MarkerCluster
 from folium.plugins import LocateControl
+import random
 
 # Load your CSV file and preprocess
 df = pd.read_csv('addresses.csv')
@@ -11,7 +12,9 @@ df = pd.read_csv('addresses.csv')
 key = '781b89ffc5eb47ab8e1b849822beacf1'
 geocoder = OpenCageGeocode(key)
 
-# Function to get latitude and longitude
+def random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
 def get_lat_long(address):
     result = geocoder.geocode(address)
     if result:
@@ -31,7 +34,8 @@ map_osm = folium.Map(location=[df['Latitude'].mean(), df['Longitude'].mean()], z
 for _, row in df.iterrows():
     folium.Marker(
         location=[row['Latitude'], row['Longitude']],
-        popup=f"{row['code']}"
+        popup=f"{row['code']}",
+        icon=folium.Icon(color=random_color())
     ).add_to(map_osm)
 
 # Add a Leaflet plugin for map rotation on touch devices
