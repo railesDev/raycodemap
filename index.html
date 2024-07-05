@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_ef43a8dfe8f3ff59cf4e4b33225ddc3e {
+                #map_91fd789c45083c70227cf14c13cb4e2e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -44,14 +44,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_ef43a8dfe8f3ff59cf4e4b33225ddc3e" ></div>
+            <div class="folium-map" id="map_91fd789c45083c70227cf14c13cb4e2e" ></div>
         
 </body>
 <script>
     
     
-            var map_ef43a8dfe8f3ff59cf4e4b33225ddc3e = L.map(
-                "map_ef43a8dfe8f3ff59cf4e4b33225ddc3e",
+            var map_91fd789c45083c70227cf14c13cb4e2e = L.map(
+                "map_91fd789c45083c70227cf14c13cb4e2e",
                 {
                     center: [59.9643163, 30.2862535],
                     crs: L.CRS.EPSG3857,
@@ -65,47 +65,53 @@
 
         
     
-            var tile_layer_e79e39d1f0fab2cb84d8e2457aa3eab0 = L.tileLayer(
+            var tile_layer_cff18c02a83c810b63ddfc2a4bdf08d1 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_e79e39d1f0fab2cb84d8e2457aa3eab0.addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+            tile_layer_cff18c02a83c810b63ddfc2a4bdf08d1.addTo(map_91fd789c45083c70227cf14c13cb4e2e);
         
     
-            var marker_36677d05e02bc14b879123db67257367 = L.marker(
+            var marker_1f7b3ad58d7e80cb2dbc9edf407f3b7b = L.marker(
                 [59.9643163, 30.2862535],
                 {}
-            ).addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+            ).addTo(map_91fd789c45083c70227cf14c13cb4e2e);
         
     
-        var popup_eab06910adf0581fbd7ebbf1da588e26 = L.popup({"maxWidth": "100%"});
+            var icon_1491f64ffee09c1c2d0cda8f7ec37a28 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "#d685d2", "prefix": "glyphicon"}
+            );
+            marker_1f7b3ad58d7e80cb2dbc9edf407f3b7b.setIcon(icon_1491f64ffee09c1c2d0cda8f7ec37a28);
+        
+    
+        var popup_2d69b6429ace134782ab4d23fa678101 = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_b1eab822d804ef6039742f53a0786c0e = $(`<div id="html_b1eab822d804ef6039742f53a0786c0e" style="width: 100.0%; height: 100.0%;"> *456#</div>`)[0];
-                popup_eab06910adf0581fbd7ebbf1da588e26.setContent(html_b1eab822d804ef6039742f53a0786c0e);
+                var html_31b306d55b118e0381fdf32eb02648c5 = $(`<div id="html_31b306d55b118e0381fdf32eb02648c5" style="width: 100.0%; height: 100.0%;"> *456#</div>`)[0];
+                popup_2d69b6429ace134782ab4d23fa678101.setContent(html_31b306d55b118e0381fdf32eb02648c5);
             
         
 
-        marker_36677d05e02bc14b879123db67257367.bindPopup(popup_eab06910adf0581fbd7ebbf1da588e26)
+        marker_1f7b3ad58d7e80cb2dbc9edf407f3b7b.bindPopup(popup_2d69b6429ace134782ab4d23fa678101)
         ;
 
         
     
     
-            var marker_cluster_21e468955d763e1869d8bd0c10c0b25a = L.markerClusterGroup(
+            var marker_cluster_aca37231c85abcf7c578a789a0a9f11b = L.markerClusterGroup(
                 {}
             );
         
     
-            marker_cluster_21e468955d763e1869d8bd0c10c0b25a.addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+            marker_cluster_aca37231c85abcf7c578a789a0a9f11b.addTo(map_91fd789c45083c70227cf14c13cb4e2e);
         
     
-            var locate_control_efd61f47e81d31a4ff7f564f82b172ed = L.control.locate(
+            var locate_control_eacc2f717f2957913bfd85f03544774c = L.control.locate(
                 {}
-            ).addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+            ).addTo(map_91fd789c45083c70227cf14c13cb4e2e);
             
         
 </script>
