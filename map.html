@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c48674507c5211c62a15f39123090e50 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c48674507c5211c62a15f39123090e50" ></div>
+        
+
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([{{ df['Latitude'].mean() }}, {{ df['Longitude'].mean() }}], 12);
+
+    // Add OSM tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
+    // Function to update user location on the map
+    function updateUserLocation(position) {
+        var latlng = [position.coords.latitude, position.coords.longitude];
+
+        // Remove previous marker if exists
+        if (typeof userMarker !== 'undefined') {
+            map.removeLayer(userMarker);
+        }
+
+        // Add new marker for user's current location
+        userMarker = L.marker(latlng).addTo(map)
+            .bindPopup("Your current location").openPopup();
+
+        // Update map view to user's current location
+        map.setView(latlng, 16);
+    }
+
+    // Function to handle errors in getting user location
+    function onLocationError(e) {
+        alert("Error accessing your location: " + e.message);
+    }
+
+    // Function to request permission for geolocation
+    function requestLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(updateUserLocation, onLocationError, {
+                enableHighAccuracy: true,
+                maximumAge: 0
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Ask for permission when the page loads
+    requestLocation();
+</script>
+</body>
+<script>
+    
+    
+            var map_c48674507c5211c62a15f39123090e50 = L.map(
+                "map_c48674507c5211c62a15f39123090e50",
+                {
+                    center: [59.9643163, 30.2862535],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_27b40c32674b6ed23b7c020ce4ae5d45 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_27b40c32674b6ed23b7c020ce4ae5d45.addTo(map_c48674507c5211c62a15f39123090e50);
+        
+    
+            var marker_57cd614d4cddaae40a3ee57975cac864 = L.marker(
+                [59.9643163, 30.2862535],
+                {}
+            ).addTo(map_c48674507c5211c62a15f39123090e50);
+        
+    
+        var popup_0ae00afbcec0dd593d2cdc635cec4376 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5c30bddcfe492ab9ce0c19a2d516f2b1 = $(`<div id="html_5c30bddcfe492ab9ce0c19a2d516f2b1" style="width: 100.0%; height: 100.0%;">Code:  *456#</div>`)[0];
+                popup_0ae00afbcec0dd593d2cdc635cec4376.setContent(html_5c30bddcfe492ab9ce0c19a2d516f2b1);
+            
+        
+
+        marker_57cd614d4cddaae40a3ee57975cac864.bindPopup(popup_0ae00afbcec0dd593d2cdc635cec4376)
+        ;
+
+        
+    
+</script>
+</html>
