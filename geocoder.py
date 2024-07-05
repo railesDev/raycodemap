@@ -67,7 +67,7 @@ with open('index.html', 'r', encoding='utf-8') as file:
 js_code = """
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var map = L.map('map').setView([{df['Latitude'].mean()}, {df['Longitude'].mean()}], 12);
+        var map = L.map('map').setView([%f, %f], 12);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19
@@ -104,7 +104,8 @@ js_code = """
         requestLocation();
     });
 </script>
-"""
+""" % (df['Latitude'].mean(), df['Longitude'].mean())  # Insert latitude and longitude here
+
 
 # Insert the JavaScript code before the closing </body> tag
 updated_html_content = html_content.replace("</body>", js_code + "</body>")
