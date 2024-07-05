@@ -40,6 +40,25 @@ for _, row in df.iterrows():
 # Save the map as an HTML file
 map_osm.save('index.html')
 
+import folium
+import pandas as pd
+
+# Load the updated CSV file
+df = pd.read_csv('updated_addresses.csv')
+
+# Create a map centered around an average location
+map_osm = folium.Map(location=[df['Latitude'].mean(), df['Longitude'].mean()], zoom_start=12)
+
+# Add markers to the map
+for _, row in df.iterrows():
+    folium.Marker(
+        location=[row['Latitude'], row['Longitude']],
+        popup=f"Code: {row['code']}"
+    ).add_to(map_osm)
+
+# Save the map as an HTML file
+map_osm.save('index.html')
+
 # Read the generated map.html file
 with open('index.html', 'r', encoding='utf-8') as file:
     html_content = file.read()
@@ -47,50 +66,43 @@ with open('index.html', 'r', encoding='utf-8') as file:
 # JavaScript code to dynamically track user location and ask for permission
 js_code = """
 <script>
-    // Initialize the map
-    var map = L.map('map').setView([{{ df['Latitude'].mean() }}, {{ df['Longitude'].mean() }}], 12);
+    document.addEventListener("DOMContentLoaded", function() {
+        var map = L.map('map').setView([{{ df['Latitude'].mean() }}, {{ df['Longitude'].mean() }}], 12);
 
-    // Add OSM tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
 
-    // Function to update user location on the map
-    function updateUserLocation(position) {
-        var latlng = [position.coords.latitude, position.coords.longitude];
+        function updateUserLocation(position) {
+            var latlng = [position.coords.latitude, position.coords.longitude];
 
-        // Remove previous marker if exists
-        if (typeof userMarker !== 'undefined') {
-            map.removeLayer(userMarker);
+            if (typeof userMarker !== 'undefined') {
+                map.removeLayer(userMarker);
+            }
+
+            userMarker = L.marker(latlng).addTo(map)
+                .bindPopup("Your current location").openPopup();
+
+            map.setView(latlng, 16);
         }
 
-        // Add new marker for user's current location
-        userMarker = L.marker(latlng).addTo(map)
-            .bindPopup("Your current location").openPopup();
-
-        // Update map view to user's current location
-        map.setView(latlng, 16);
-    }
-
-    // Function to handle errors in getting user location
-    function onLocationError(e) {
-        alert("Error accessing your location: " + e.message);
-    }
-
-    // Function to request permission for geolocation and track position
-    function requestLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
-                enableHighAccuracy: true,
-                maximumAge: 0
-            });
-        } else {
-            alert("Geolocation is not supported by this browser.");
+        function onLocationError(e) {
+            alert("Error accessing your location: " + e.message);
         }
-    }
 
-    // Ask for permission when the page loads
-    requestLocation();
+        function requestLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
+                    enableHighAccuracy: true,
+                    maximumAge: 0
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        requestLocation();
+    });
 </script>
 """
 
@@ -100,4 +112,3 @@ updated_html_content = html_content.replace("</body>", js_code + "</body>")
 # Save the updated HTML content to a new file
 with open('index.html', 'w', encoding='utf-8') as file:
     file.write(updated_html_content)
-
