@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_52fa29d24c9d5d73fd7823e63dc83011 {
+                #map_ef43a8dfe8f3ff59cf4e4b33225ddc3e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,58 +35,23 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
 </head>
 <body>
     
     
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var map = L.map('map').setView([59.964316, 30.286254], 12);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19
-        }).addTo(map);
-
-        var userDot = L.circleMarker([0, 0], {
-            radius: 10,
-            color: 'red',
-            fillColor: 'red',
-            fillOpacity: 1
-        }).addTo(map);
-
-        function updateUserLocation(position) {
-            var latlng = [position.coords.latitude, position.coords.longitude];
-            userDot.setLatLng(latlng);
-            map.setView(latlng, 16);
-        }
-
-        function onLocationError(e) {
-            alert("Error accessing your location: " + e.message);
-        }
-
-        function requestLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(updateUserLocation, onLocationError, {
-                    enableHighAccuracy: true,
-                    maximumAge: 0
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        requestLocation();
-    });
-</script>
-    
-            <div class="folium-map" id="map_52fa29d24c9d5d73fd7823e63dc83011" ></div>
+            <div class="folium-map" id="map_ef43a8dfe8f3ff59cf4e4b33225ddc3e" ></div>
         
 </body>
 <script>
     
     
-            var map_52fa29d24c9d5d73fd7823e63dc83011 = L.map(
-                "map_52fa29d24c9d5d73fd7823e63dc83011",
+            var map_ef43a8dfe8f3ff59cf4e4b33225ddc3e = L.map(
+                "map_ef43a8dfe8f3ff59cf4e4b33225ddc3e",
                 {
                     center: [59.9643163, 30.2862535],
                     crs: L.CRS.EPSG3857,
@@ -100,34 +65,48 @@
 
         
     
-            var tile_layer_56ee330f028d94733e782cfbefe74d08 = L.tileLayer(
+            var tile_layer_e79e39d1f0fab2cb84d8e2457aa3eab0 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
             );
         
     
-            tile_layer_56ee330f028d94733e782cfbefe74d08.addTo(map_52fa29d24c9d5d73fd7823e63dc83011);
+            tile_layer_e79e39d1f0fab2cb84d8e2457aa3eab0.addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
         
     
-            var marker_4cc86d54e50abe50822bc9f47d1c6caf = L.marker(
+            var marker_36677d05e02bc14b879123db67257367 = L.marker(
                 [59.9643163, 30.2862535],
                 {}
-            ).addTo(map_52fa29d24c9d5d73fd7823e63dc83011);
+            ).addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
         
     
-        var popup_10393dbff890b8cfedba188750df921a = L.popup({"maxWidth": "100%"});
+        var popup_eab06910adf0581fbd7ebbf1da588e26 = L.popup({"maxWidth": "100%"});
 
         
             
-                var html_cc48affa2b20ec7ad9f287407009c86b = $(`<div id="html_cc48affa2b20ec7ad9f287407009c86b" style="width: 100.0%; height: 100.0%;">Code:  *456#</div>`)[0];
-                popup_10393dbff890b8cfedba188750df921a.setContent(html_cc48affa2b20ec7ad9f287407009c86b);
+                var html_b1eab822d804ef6039742f53a0786c0e = $(`<div id="html_b1eab822d804ef6039742f53a0786c0e" style="width: 100.0%; height: 100.0%;"> *456#</div>`)[0];
+                popup_eab06910adf0581fbd7ebbf1da588e26.setContent(html_b1eab822d804ef6039742f53a0786c0e);
             
         
 
-        marker_4cc86d54e50abe50822bc9f47d1c6caf.bindPopup(popup_10393dbff890b8cfedba188750df921a)
+        marker_36677d05e02bc14b879123db67257367.bindPopup(popup_eab06910adf0581fbd7ebbf1da588e26)
         ;
 
         
     
+    
+            var marker_cluster_21e468955d763e1869d8bd0c10c0b25a = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            marker_cluster_21e468955d763e1869d8bd0c10c0b25a.addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+        
+    
+            var locate_control_efd61f47e81d31a4ff7f564f82b172ed = L.control.locate(
+                {}
+            ).addTo(map_ef43a8dfe8f3ff59cf4e4b33225ddc3e);
+            
+        
 </script>
 </html>
