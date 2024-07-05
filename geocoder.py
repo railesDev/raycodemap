@@ -56,10 +56,10 @@ for _, row in df.iterrows():
         popup=f"Code: {row['code']}"
     ).add_to(map_osm)
 
-# Save the map as an HTML file
+# Save the map as an HTML file (renamed to index.html)
 map_osm.save('index.html')
 
-# Read the generated map.html file
+# Read the generated index.html file
 with open('index.html', 'r', encoding='utf-8') as file:
     html_content = file.read()
 
@@ -106,10 +106,11 @@ js_code = """
 </script>
 """ % (df['Latitude'].mean(), df['Longitude'].mean())  # Insert latitude and longitude here
 
-
 # Insert the JavaScript code before the closing </body> tag
 updated_html_content = html_content.replace("</body>", js_code + "</body>")
 
-# Save the updated HTML content to a new file
+# Save the updated HTML content to the same file (index.html)
 with open('index.html', 'w', encoding='utf-8') as file:
     file.write(updated_html_content)
+
+print("Updated map with dynamic location tracking and permission request saved to 'index.html'")
