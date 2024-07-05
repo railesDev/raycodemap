@@ -33,10 +33,10 @@ for _, row in df.iterrows():
     ).add_to(map_osm)
 
 # Save the map as an HTML file
-map_osm.save('map.html')
+map_osm.save('index.html')
 
 # Read the existing map.html file
-with open('map.html', 'r', encoding='utf-8') as file:
+with open('index.html', 'r', encoding='utf-8') as file:
     html_content = file.read()
 
 # JavaScript code to dynamically track user location
@@ -94,6 +94,6 @@ js_code = """
 updated_html_content = html_content.replace("</body>", js_code + "</body>")
 
 # Save the updated HTML content to a new file
-with open('map.html', 'w', encoding='utf-8') as file:
+with open('index.html', 'w', encoding='utf-8') as file:
     file.write(updated_html_content)
 
